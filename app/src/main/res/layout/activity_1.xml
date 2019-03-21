@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity1">
+
+    <TextView
+        android:id="@+id/Header1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="24dp"
+        android:text="Triviaquizzer"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="50dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header1"
+        tools:src="@drawable/quiztime" />
+
+    <Button
+        android:id="@+id/Button1"
+        style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout1" />
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/gridLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="13dp"
+        app:columnCount="1"
+        app:layout_constraintBottom_toTopOf="@+id/Button1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+        app:rowCount="6">
+
+        <Spinner
+            android:id="@+id/SpinnerDuration1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp" />
+
+        <Spinner
+            android:id="@+id/SpinnerDifficulty1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp" />
+
+        <Spinner
+            android:id="@+id/SpinnerCategory1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            tools:layout_editor_absoluteX="111dp"
+            tools:layout_editor_absoluteY="573dp" />
+    </android.support.v7.widget.GridLayout>
+</android.support.constraint.ConstraintLayout>
