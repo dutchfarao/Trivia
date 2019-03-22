@@ -37,6 +37,7 @@
             android:id="@+id/Answer1"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:contentDescription="button1"
             android:text="Button"
             tools:layout_editor_absoluteY="180dp" />
 
@@ -44,6 +45,7 @@
             android:id="@+id/Answer2"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:contentDescription="button2"
             android:text="Button"
             tools:layout_editor_absoluteY="180dp" />
 
@@ -51,6 +53,7 @@
             android:id="@+id/Answer3"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:contentDescription="button3"
             android:text="Button"
             tools:layout_editor_absoluteY="180dp" />
 
@@ -58,7 +61,23 @@
             android:id="@+id/Answer4"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:contentDescription="button4"
             android:text="Button"
             tools:layout_editor_absoluteY="180dp" />
     </android.support.v7.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/Score2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="306dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="50dp"
+        android:text="Score: "
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Question2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

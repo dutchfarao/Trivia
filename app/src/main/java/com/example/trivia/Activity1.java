@@ -114,6 +114,8 @@ public class Activity1 extends AppCompatActivity {
             intent.putExtra("selectedCategory", selectedCategory);
             startActivity(intent);
 
+
+
         }
     }
 

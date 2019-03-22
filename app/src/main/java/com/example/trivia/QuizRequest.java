@@ -1,22 +1,19 @@
 package com.example.trivia;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
-
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import javax.security.auth.callback.Callback;
+
 
 public class QuizRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
     Context context;
@@ -29,6 +26,10 @@ public class QuizRequest implements Response.Listener<JSONObject>, Response.Erro
     public String question;
     public String correct_answer;
     public JSONArray incorrect_answers;
+    public ArrayList<Question> qList;
+
+    private static final String TAG = "MyActivity";
+
 
     @Override
     public void onErrorResponse(VolleyError error) {
@@ -38,7 +39,7 @@ public class QuizRequest implements Response.Listener<JSONObject>, Response.Erro
 
     @Override
     public void onResponse(JSONObject response) {
-        ArrayList<Question> qlist = new ArrayList<>();
+        qList = new ArrayList<>();
         //create empty JSONArray
         questions = new JSONArray();
         //fill JSONArray with arraylist from url
@@ -52,19 +53,25 @@ public class QuizRequest implements Response.Listener<JSONObject>, Response.Erro
                 Question Quizquestion = new Question();
                 //fill object with info
                 question = object.getString("question");
+                Log.i(TAG, "loaded question" + question);
+
                 correct_answer = object.getString("correct_answer");
+                Log.i(TAG, "loaded answer" + correct_answer);
+
                 incorrect_answers = object.getJSONArray("incorrect_answers");
+                Log.i(TAG, "loaded answer" + incorrect_answers);
+
                 ArrayList <String> incorrect_answersList = new ArrayList<>();
-                for (int j = 0; i < incorrect_answers.length(); j++){
+                for (int j = 0; j < 3; j++){
                     incorrect_answersList.add(j, String.valueOf(incorrect_answers.get(j)));
                 }
                 Quizquestion.setQuestion(question);
                 Quizquestion.setCorrect_answer(correct_answer);
                 Quizquestion.setIncorrect_answers(incorrect_answersList);
                 //add filled object to list
-                qlist.add(Quizquestion);
+                qList.add(Quizquestion);
             }
-            activity.gotQuestion(qlist);
+            activity.gotQuestion(qList);
 
         } catch (JSONException e) {
             e.printStackTrace();
