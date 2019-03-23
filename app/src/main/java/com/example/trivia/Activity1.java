@@ -7,26 +7,28 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 public class Activity1 extends AppCompatActivity {
     String selectedDuration;
     String selectedDifficulty;
     String selectedCategory;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_1);
-
-
+        //due to androidstudio bug drawable wasn't being shown so i chose to do this by code.
+        logo = findViewById(R.id.imageView1);
+        logo.setImageResource(R.drawable.knowledge);
 
         //setting up list with duration as content, hardcoded
         String[] arrayDuration = new String[]{
                 "Short", "Medium", "Long"
         };
         Spinner spinnerDuration = findViewById(R.id.SpinnerDuration1);
-
 
         //setting up list with difficulty as content, hardcoded
         String[] arrayDifficulty = new String[]{
@@ -73,7 +75,7 @@ public class Activity1 extends AppCompatActivity {
 
     }
 
-    //create 'onclick' for spinner
+    //create 'onclick' for spinners
     private class onSpinnerClick1 implements AdapterView.OnItemSelectedListener{
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -108,14 +110,12 @@ public class Activity1 extends AppCompatActivity {
     private class onClick implements View.OnClickListener{
         @Override
         public void onClick(View v) {
+            //set intent and start new activity
             Intent intent = new Intent(Activity1.this, Activity2.class);
             intent.putExtra("selectedDuration", selectedDuration);
             intent.putExtra("selectedDifficulty", selectedDifficulty);
             intent.putExtra("selectedCategory", selectedCategory);
             startActivity(intent);
-
-
-
         }
     }
 

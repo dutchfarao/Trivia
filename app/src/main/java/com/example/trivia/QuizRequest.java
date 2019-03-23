@@ -2,7 +2,6 @@ package com.example.trivia;
 
 import android.content.Context;
 import android.util.Log;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -12,8 +11,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 import java.util.ArrayList;
-
-
 
 public class QuizRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
     Context context;
@@ -28,9 +25,6 @@ public class QuizRequest implements Response.Listener<JSONObject>, Response.Erro
     public JSONArray incorrect_answers;
     public ArrayList<Question> qList;
 
-    private static final String TAG = "MyActivity";
-
-
     @Override
     public void onErrorResponse(VolleyError error) {
         getQuestions(activity);
@@ -42,25 +36,19 @@ public class QuizRequest implements Response.Listener<JSONObject>, Response.Erro
         qList = new ArrayList<>();
         //create empty JSONArray
         questions = new JSONArray();
-        //fill JSONArray with arraylist from url
-
+        //fill JSONArray with data from from url
         try {
             questions = response.getJSONArray("results");
             //iterate over objects
             for (int i = 0; i < questions.length(); i++) {
                 JSONObject object = questions.getJSONObject(i);
-                //create menuItem object
+                //create Question object
                 Question Quizquestion = new Question();
                 //fill object with info
                 question = object.getString("question");
-                Log.i(TAG, "loaded question" + question);
-
                 correct_answer = object.getString("correct_answer");
-                Log.i(TAG, "loaded answer" + correct_answer);
-
                 incorrect_answers = object.getJSONArray("incorrect_answers");
-                Log.i(TAG, "loaded answer" + incorrect_answers);
-
+                //get individual questions from incorrect_questions array
                 ArrayList <String> incorrect_answersList = new ArrayList<>();
                 for (int j = 0; j < 3; j++){
                     incorrect_answersList.add(j, String.valueOf(incorrect_answers.get(j)));
@@ -72,24 +60,28 @@ public class QuizRequest implements Response.Listener<JSONObject>, Response.Erro
                 qList.add(Quizquestion);
             }
             activity.gotQuestion(qList);
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 
     void getQuestions(Callback activity){
         this.activity = activity;
         RequestQueue queue = Volley.newRequestQueue(context);
+        //the api url always starts with this, after that, depending on what the user has chosen,
+        //the url is build up accordingly
         url = "https://opentdb.com/api.php?amount=";
-
         //duration
         if (duration.equals("short")){
+            //5 questions
             url = url + "5";
         }
+        else if(duration.equals("medium")){
+            //10 questions
+            url = url + "10";
+        }
         else if (duration.equals("long")) {
+            //15 questions
             url = url + "15";
         }
         //category
@@ -117,10 +109,6 @@ public class QuizRequest implements Response.Listener<JSONObject>, Response.Erro
         }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, this, this);
         queue.add(jsonObjectRequest);
-
-
-
-
     }
 
     public interface Callback {

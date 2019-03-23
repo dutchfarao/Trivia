@@ -1,9 +1,5 @@
 package com.example.trivia;
-
-import org.json.JSONArray;
-
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Question implements Serializable {

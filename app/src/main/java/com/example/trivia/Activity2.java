@@ -1,16 +1,14 @@
 package com.example.trivia;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -38,10 +36,6 @@ public class Activity2 extends AppCompatActivity implements QuizRequest.Callback
     ArrayList<String> randomAnswers;
     String UserChoice;
 
-
-    private static final String TAG = "MyActivity";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,19 +48,14 @@ public class Activity2 extends AppCompatActivity implements QuizRequest.Callback
         //get intent
         Intent intent = getIntent();
         selectedDuration = intent.getStringExtra("selectedDuration");
-        Log.i(TAG, "selected duration in first activity:" + selectedDuration);
         selectedDifficulty = intent.getStringExtra("selectedDifficulty");
-        Log.i(TAG, "selected difficulty in first activity:" + selectedDifficulty);
         selectedCategory = intent.getStringExtra("selectedCategory");
-        Log.i(TAG, "selected category in first activity:" + selectedCategory);
 
-        //get choices form user
+        //get questions according to the options user has chosen
         QuizRequest x = new QuizRequest(this, selectedDuration, selectedDifficulty, selectedCategory);
         x.getQuestions(this);
 
         //create button listeners
-        //create listener for button
-
         onClick onButtonClick = new onClick();
         onClick onButtonClick2 = new onClick();
         onClick onButtonClick3 = new onClick();
@@ -82,34 +71,40 @@ public class Activity2 extends AppCompatActivity implements QuizRequest.Callback
 
     @Override
     public void gotQuestion(ArrayList<Question> qList1) {
+        //get arraylist of questions
         qList = qList1;
+        //get number of questions, we'll use this later
         qlistSize = qList.size();
-        Log.d(TAG, "qlistsize: " + qlistSize);
+        //current question is the question which the user is answering at the moment
         currentQuestion = qList.get(count);
-        uiSetter(count);
+        //calling interface method
+        InterfaceCreator(count);
 
 
     }
 
-    public void uiSetter(int i) {
+    public void InterfaceCreator(int i) {
         i = count;
         currentQuestion = qList.get(i);
+        //get question
         questioni = currentQuestion.getQuestion();
+        //get correct answers and incorrect answers and then shuffle them
         correct_answeri = currentQuestion.getCorrect_answer();
         randomAnswers = currentQuestion.getIncorrect_answers();
         randomAnswers.add(correct_answeri);
         Collections.shuffle(randomAnswers);
-        Answer1.setText(randomAnswers.get(0));
-        Answer2.setText(randomAnswers.get(1));
-        Answer3.setText(randomAnswers.get(2));
-        Answer4.setText(randomAnswers.get(3));
-        Question2.setText(questioni);
-
+        //setting text, implementing html to display text correctly.
+        Answer1.setText(Html.fromHtml(randomAnswers.get(0)));
+        Answer2.setText(Html.fromHtml(randomAnswers.get(1)));
+        Answer3.setText(Html.fromHtml(randomAnswers.get(2)));
+        Answer4.setText(Html.fromHtml(randomAnswers.get(3)));
+        Question2.setText(Html.fromHtml(questioni));
     }
 
     @Override
     public void gotQuestionError(String message) {
-        Toast.makeText(this, "No connection.", Toast.LENGTH_LONG).show();
+        //set toast in case of no questions
+        Toast.makeText(this, "Something wrong with connection.", Toast.LENGTH_LONG).show();
 
     }
 
@@ -119,6 +114,7 @@ public class Activity2 extends AppCompatActivity implements QuizRequest.Callback
         public void onClick(View v) {
             count++;
             buttonClicked = String.valueOf(v.getContentDescription());
+            //check which button has been clicked by user
             switch (buttonClicked){
                 case "button1":
                     answerUser = 0;
@@ -133,35 +129,38 @@ public class Activity2 extends AppCompatActivity implements QuizRequest.Callback
                     answerUser = 3;
                     break;
             }
-
-
             UserChoice = randomAnswers.get(answerUser);
-            Log.d(TAG, "UserChoise: " + UserChoice);
-            Log.d(TAG, "answerUser: " + answerUser);
 
-
+            //if answer is correct, add score, according to the level of difficulty user has chosen.
             if (correct_answeri.equals(UserChoice)) {
-                score++;
-                Log.d(TAG, "Score: " + score);
+                if (selectedDifficulty.equals("easy")){
+                    score++;
+                }
+                if(selectedDifficulty.equals("medium")){
+                    score = score + 2;
+                }
+                if (selectedDifficulty.equals("hard")){
+                    score = score + 3;
+                }
                 Score2= findViewById(R.id.Score2);
                 scoreString = String.valueOf(score);
+                //set score in appropriate textView
                 Score2.setText("Score: " + scoreString);
             }
+            //if all questions have been answered, continue to next activity
             if (count == qlistSize){
                 Intent intent = new Intent(Activity2.this, Activity3.class);
                 intent.putExtra("score", scoreString);
+                intent.putExtra("scoreInt", score);
+                intent.putExtra("selectedDifficulty", selectedDifficulty);
+                intent.putExtra("selectedDuration", selectedDuration);
                 startActivity(intent);
             }
+            //else, continue with next question
             else if(count < qlistSize ) {
-                uiSetter(count);
+                InterfaceCreator(count);
             }
-
-
-
-
         }
     }
-
-
 }
 
