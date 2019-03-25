@@ -12,13 +12,13 @@ Select duration, difficulty and category of the quiz -> Answer all the questions
 
 # Screenhots
 
-![ScreenShot1](https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_1.png)
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_1.png" width="200" height="400" /> 
 
-![ScreenShot2](https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_2.png)
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_2.png" width="200" height="400" />
 
-![ScreenShot3](https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_3.png)
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_3.png" width="200" height="400" />
 
-![ScreenShot3](https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_4.png)
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_4.png" width="200" height="400" />
 
 
 
