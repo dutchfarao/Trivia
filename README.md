@@ -9,6 +9,11 @@ I also added a homescreen where users can select the lenght of the quiz (5/10/15
 ## Usage
 Select duration, difficulty and category of the quiz -> Answer all the questions -> Post your score!
 
+# Extra 
+
+- Added a homescreen where users can select duration, difficulty and category of quiz
+- The scoreboard is sorted from high to low and also shows with what difficulty and duration the user got that actual score.
+- Beautiful in both portrait and landscape mode.
 
 # Screenhots
 
@@ -20,11 +25,11 @@ Select duration, difficulty and category of the quiz -> Answer all the questions
 
 <img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_4.png" width="200" height="400" />
 
-<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_5.png" width="200" height="400" />
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_5.png" width="400" height="200" />
 
-<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_6.png" width="200" height="400" />
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_6.png" width="400" height="200" />
 
-<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_7.png" width="200" height="400" />
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_7.png" width="400" height="200" />
 
 
 
