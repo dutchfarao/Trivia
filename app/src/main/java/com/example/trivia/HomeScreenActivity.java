@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
-public class Activity1 extends AppCompatActivity {
+public class HomeScreenActivity extends AppCompatActivity {
     String selectedDuration;
     String selectedDifficulty;
     String selectedCategory;
@@ -111,7 +111,7 @@ public class Activity1 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             //set intent and start new activity
-            Intent intent = new Intent(Activity1.this, Activity2.class);
+            Intent intent = new Intent(HomeScreenActivity.this, QuestionActivity.class);
             intent.putExtra("selectedDuration", selectedDuration);
             intent.putExtra("selectedDifficulty", selectedDifficulty);
             intent.putExtra("selectedCategory", selectedCategory);

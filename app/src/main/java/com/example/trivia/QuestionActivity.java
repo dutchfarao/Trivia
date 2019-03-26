@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class Activity2 extends AppCompatActivity implements QuizRequest.Callback{
+public class QuestionActivity extends AppCompatActivity implements QuizRequest.Callback{
     String selectedDuration;
     String selectedDifficulty;
     String selectedCategory;
@@ -149,7 +148,7 @@ public class Activity2 extends AppCompatActivity implements QuizRequest.Callback
             }
             //if all questions have been answered, continue to next activity
             if (count == qlistSize){
-                Intent intent = new Intent(Activity2.this, Activity3.class);
+                Intent intent = new Intent(QuestionActivity.this, PostScoreActivity.class);
                 intent.putExtra("score", scoreString);
                 intent.putExtra("scoreInt", score);
                 intent.putExtra("selectedDifficulty", selectedDifficulty);

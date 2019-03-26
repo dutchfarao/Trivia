@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="400dp"
-    tools:context=".Activity4">
+    tools:context=".ScoreboardActivity">
 
     <TextView
         android:id="@+id/textView5"
@@ -24,7 +24,7 @@
         android:layout_marginTop="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".Activity4"
+        tools:context=".ScoreboardActivity"
         tools:layout_editor_absoluteX="34dp" />
 
     <TextView

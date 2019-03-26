@@ -8,7 +8,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
-public class Activity4 extends AppCompatActivity implements ScoreRequest.Callback{
+public class ScoreboardActivity extends AppCompatActivity implements ScoreRequest.Callback{
     String userName;
     ListView listView;
     int scoreInt;
@@ -48,7 +48,7 @@ public class Activity4 extends AppCompatActivity implements ScoreRequest.Callbac
     //this makes sure that activity 1 is loaded when user presses back button in activity4
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Activity4.this, Activity1.class);
+        Intent intent = new Intent(ScoreboardActivity.this, HomeScreenActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

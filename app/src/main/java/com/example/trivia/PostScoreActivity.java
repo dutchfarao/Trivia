@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Activity3 extends AppCompatActivity {
+public class PostScoreActivity extends AppCompatActivity {
     String score;
     String userName;
     int scoreInt;
@@ -43,7 +43,7 @@ public class Activity3 extends AppCompatActivity {
             //get username from EditText
             userName = String.valueOf(UserInput.getText());
             //start next activity
-            Intent intent = new Intent(Activity3.this, Activity4.class);
+            Intent intent = new Intent(PostScoreActivity.this, ScoreboardActivity.class);
             intent.putExtra("userName", userName);
             intent.putExtra("scoreInt", scoreInt);
             intent.putExtra("selectedDifficulty", selectedDifficulty);
