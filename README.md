@@ -20,6 +20,12 @@ Select duration, difficulty and category of the quiz -> Answer all the questions
 
 <img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_4.png" width="200" height="400" />
 
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_5.png" width="200" height="400" />
+
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_6.png" width="200" height="400" />
+
+<img src="https://github.com/dutchfarao/trivia/blob/master/doc/Screenshot_7.png" width="200" height="400" />
+
 
 
 ```
